@@ -1,0 +1,33 @@
+{
+  "name": "lens-landing-page",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ProjectLens - Landing page oficial para divulgação e atração de novos usuários",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "project-lens",
+    "landing-page",
+    "lgpd",
+    "privacy-audit",
+    "security",
+    "chrome-extension"
+  ],
+  "author": "ProjectLens Team",
+  "license": "MIT",
+  "dependencies": {
+    "lucide-react": "^1.48.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.4.3"
+  }
+}
