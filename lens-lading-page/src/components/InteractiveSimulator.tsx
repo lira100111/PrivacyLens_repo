@@ -42,15 +42,15 @@ export const InteractiveSimulator: React.FC = () => {
 
   // Mock cookies based on consent state
   const cookies: MockCookie[] = [
-    { name: 'session_id', domain: '.loja-exemplo.com.br', secure: true, httpOnly: true, sameSite: 'lax', sourceContext: 'before_consent' },
-    { name: 'csrf_token', domain: 'loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'strict', sourceContext: 'before_consent' },
+    { name: 'session_id', domain: '.loja-exemplo.com.br', secure: true, httpOnly: true, sameSite: 'lax', sourceContext: 'before_consent' as const },
+    { name: 'csrf_token', domain: 'loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'strict', sourceContext: 'before_consent' as const },
     ...(consentChoice === 'REJECTED_ALL' ? [
-      { name: 'opt_out_consent', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' },
-      { name: '_fbp', domain: '.facebook.com', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent', isSuspicious: true }
+      { name: 'opt_out_consent', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' as const },
+      { name: '_fbp', domain: '.facebook.com', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' as const, isSuspicious: true }
     ] : consentChoice === 'ACCEPTED_ALL' ? [
-      { name: '_ga', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' },
-      { name: '_fbp', domain: '.facebook.com', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' },
-      { name: '_hjSession', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'no_restriction', sourceContext: 'after_consent' }
+      { name: '_ga', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' as const },
+      { name: '_fbp', domain: '.facebook.com', secure: true, httpOnly: false, sameSite: 'lax', sourceContext: 'after_consent' as const },
+      { name: '_hjSession', domain: '.loja-exemplo.com.br', secure: true, httpOnly: false, sameSite: 'no_restriction', sourceContext: 'after_consent' as const }
     ] : [])
   ];
 

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { 
   Download, 
   Terminal, 
-  Chrome, 
   Check, 
   Copy, 
   FolderCheck, 
   Sparkles,
   ExternalLink
 } from 'lucide-react';
+import { ChromeIcon } from './Icons';
 
 interface InstallationSectionProps {
   onOpenModal: () => void;
@@ -103,7 +103,7 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
         <div className="install-card">
           <div className="install-card-badge store-badge">Em Breve na Store</div>
           <div className="install-card-header">
-            <Chrome size={22} className="text-emerald" />
+            <ChromeIcon size={22} className="text-emerald" />
             <div>
               <h3>Chrome Web Store (Lançamento Oficial)</h3>
               <p>Instalação com 1 clique diretamente pelo catálogo do Google Chrome.</p>
@@ -131,7 +131,7 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
                 className="btn-store-disabled"
                 onClick={onOpenModal}
               >
-                <Chrome size={16} />
+                <ChromeIcon size={16} />
                 <span>Ver Instruções Detalhadas</span>
               </button>
             </div>

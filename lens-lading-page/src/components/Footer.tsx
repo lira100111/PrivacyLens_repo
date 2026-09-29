@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield, Github, FileText, Lock, Heart, ExternalLink } from 'lucide-react';
+import { Shield, FileText, Lock, Heart, ExternalLink } from 'lucide-react';
+import { GithubIcon } from './Icons';
 
 export const Footer: React.FC = () => {
   return (
@@ -27,7 +28,7 @@ export const Footer: React.FC = () => {
               className="social-btn"
               title="GitHub"
             >
-              <Github size={18} />
+              <GithubIcon size={18} />
               <span>leonardoferreira21/ProjectLens</span>
             </a>
           </div>

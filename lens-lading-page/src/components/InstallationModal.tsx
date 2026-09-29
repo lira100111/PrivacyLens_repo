@@ -4,7 +4,6 @@ import {
   Terminal, 
   Copy, 
   Check, 
-  Chrome, 
   ArrowRight,
   ExternalLink,
   ShieldCheck,

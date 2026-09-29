@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Shield, Github, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Shield, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { GithubIcon } from './Icons';
 
 interface NavbarProps {
   onOpenInstallModal: () => void;
@@ -40,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInstallModal }) => {
             className="btn-github"
             title="Ver código no GitHub"
           >
-            <Github size={17} />
+            <GithubIcon size={17} />
             <span>GitHub</span>
           </a>
 
