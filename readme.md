@@ -80,6 +80,7 @@ Exemplo: "O cookie X foi criado após a escolha 'Rejeitar'" é uma evidência ob
 14. **RF14** — Verificar a integridade da cadeia.
 15. **RF15** — Exibir resultados em dashboard.
 16. **RF16** — Exportar a sessão de auditoria em JSON.
+17. **RF17** — Exibir uma breve explicação sobre os eventos coletados informando ao usuário se o que foi coletado representa algum risco para segurança para o usuário.
 
 ### 5.2 Requisitos não funcionais
 
