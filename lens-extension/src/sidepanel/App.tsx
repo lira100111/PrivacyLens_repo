@@ -1,5 +1,12 @@
-import { useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { useAuditSession } from '../hooks/useAuditSession';
+import {
+  buildSessionRiskReport,
+  assessChainIntegrity,
+  compareRisk,
+  RISK_CATEGORY_LABELS
+} from '../shared/risk-analysis';
+import { RiskNote, RiskSummaryBar } from './components/RiskNote';
 import { 
   Shield, 
   Play, 
@@ -34,6 +41,20 @@ export default function App() {
   const cookiesList = session ? Object.values(session.cookies) : [];
   const thirdPartyRequests = session 
     ? session.networkRequests.filter((r) => r.isThirdParty) 
+    : [];
+
+  // RF17 — risk explanations derived from the collected evidence (not stored in the chain)
+  const riskReport = useMemo(() => (session ? buildSessionRiskReport(session) : null), [session]);
+  const cookieEntries = session ? Object.entries(session.cookies) : [];
+  const thirdPartyAssessed = session && riskReport
+    ? session.networkRequests
+        .map((req, i) => ({ req, risk: riskReport.network[i] }))
+        .filter(({ req }) => req.isThirdParty)
+    : [];
+  const topRisks = riskReport
+    ? riskReport.items
+        .filter((item) => item.assessment.level === 'high' || item.assessment.level === 'medium')
+        .sort((a, b) => compareRisk(a.assessment, b.assessment))
     : [];
 
   return (
@@ -153,6 +174,36 @@ export default function App() {
                   </div>
                 </div>
 
+                {riskReport && (
+                  <div className="card">
+                    <h2><AlertTriangle size={14} /> Riscos para o Usuário</h2>
+                    <RiskSummaryBar assessments={riskReport.items.map((item) => item.assessment)} />
+                    {topRisks.length === 0 ? (
+                      <p style={{ color: 'var(--text-muted)', fontSize: '11.5px' }}>
+                        Nenhum risco médio ou alto identificado até o momento.
+                      </p>
+                    ) : (
+                      <div className="risk-list">
+                        {topRisks.slice(0, 6).map((item, idx) => (
+                          <RiskNote
+                            key={`${item.category}-${item.subject}-${idx}`}
+                            title={`${RISK_CATEGORY_LABELS[item.category]} · ${item.subject}`}
+                            assessment={item.assessment}
+                          />
+                        ))}
+                        {topRisks.length > 6 && (
+                          <p style={{ color: 'var(--text-muted)', fontSize: '11px' }}>
+                            + {topRisks.length - 6} itens com risco. Consulte as abas para ver todos.
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    <p className="risk-disclaimer">
+                      Classificação heurística baseada nos fatos observados; não constitui parecer jurídico.
+                    </p>
+                  </div>
+                )}
+
                 <div className="card">
                   <h2>Metodologia de Auditoria Explicável</h2>
                   <p style={{ color: 'var(--text-muted)', fontSize: '11.5px', marginBottom: '8px' }}>
@@ -183,6 +234,11 @@ export default function App() {
                   <p style={{ marginBottom: '10px', fontSize: '12px' }}>
                     Estado Atual: <strong>{session.currentConsentState}</strong>
                   </p>
+                  {riskReport && (
+                    <div style={{ marginBottom: '10px' }}>
+                      <RiskNote assessment={riskReport.consentOverview} />
+                    </div>
+                  )}
                   {session.consentEvents.length === 0 ? (
                     <p style={{ color: 'var(--text-muted)' }}>
                       Nenhuma ação de banner/consentimento registrada ainda. Interaja com o banner na página para registrar.
@@ -198,6 +254,7 @@ export default function App() {
                             </span>
                           </div>
                           <div style={{ fontSize: '11px' }}>{ev.details || ev.cmpName}</div>
+                          {riskReport?.consent[idx] && <RiskNote assessment={riskReport.consent[idx]} />}
                         </div>
                       ))}
                     </div>
@@ -211,6 +268,7 @@ export default function App() {
               <div>
                 <div className="card">
                   <h2><Cookie size={14} /> Cookies Detectados ({cookiesList.length})</h2>
+                  {riskReport && <RiskSummaryBar assessments={Object.values(riskReport.cookies)} />}
                   {cookiesList.length === 0 ? (
                     <p style={{ color: 'var(--text-muted)' }}>Nenhum cookie registrado.</p>
                   ) : (
@@ -225,8 +283,9 @@ export default function App() {
                           </tr>
                         </thead>
                         <tbody>
-                          {cookiesList.map((c, i) => (
-                            <tr key={i}>
+                          {cookieEntries.map(([key, c]) => (
+                            <Fragment key={key}>
+                            <tr className="has-risk-row">
                               <td className="mono" style={{ fontWeight: 600 }}>{c.name}</td>
                               <td className="mono">{c.domain}</td>
                               <td>
@@ -244,6 +303,12 @@ export default function App() {
                                 </span>
                               </td>
                             </tr>
+                            {riskReport?.cookies[key] && (
+                              <tr className="risk-row">
+                                <td colSpan={4}><RiskNote assessment={riskReport.cookies[key]} /></td>
+                              </tr>
+                            )}
+                            </Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -253,6 +318,7 @@ export default function App() {
 
                 <div className="card">
                   <h2><Database size={14} /> Armazenamento Local ({session.storageItems.length})</h2>
+                  {riskReport && <RiskSummaryBar assessments={riskReport.storage} />}
                   {session.storageItems.length === 0 ? (
                     <p style={{ color: 'var(--text-muted)' }}>Nenhum item em localStorage/sessionStorage observado.</p>
                   ) : (
@@ -267,11 +333,18 @@ export default function App() {
                         </thead>
                         <tbody>
                           {session.storageItems.map((s, idx) => (
-                            <tr key={idx}>
+                            <Fragment key={idx}>
+                            <tr className="has-risk-row">
                               <td><span className="badge-tag yes">{s.type}</span></td>
                               <td className="mono">{s.key}</td>
                               <td>{s.sizeBytes} bytes</td>
                             </tr>
+                            {riskReport?.storage[idx] && (
+                              <tr className="risk-row">
+                                <td colSpan={3}><RiskNote assessment={riskReport.storage[idx]} /></td>
+                              </tr>
+                            )}
+                            </Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -286,6 +359,7 @@ export default function App() {
               <div>
                 <div className="card">
                   <h2><Globe size={14} /> Requisições de Terceiros ({thirdPartyRequests.length})</h2>
+                  <RiskSummaryBar assessments={thirdPartyAssessed.map(({ risk }) => risk)} />
                   {thirdPartyRequests.length === 0 ? (
                     <p style={{ color: 'var(--text-muted)' }}>Nenhuma requisição de terceiros observada.</p>
                   ) : (
@@ -299,12 +373,17 @@ export default function App() {
                           </tr>
                         </thead>
                         <tbody>
-                          {thirdPartyRequests.map((req, idx) => (
-                            <tr key={idx}>
+                          {thirdPartyAssessed.map(({ req, risk }, idx) => (
+                            <Fragment key={`${req.requestId}-${idx}`}>
+                            <tr className="has-risk-row">
                               <td className="mono" style={{ color: '#38bdf8' }}>{req.domain}</td>
                               <td>{req.method}</td>
                               <td>{req.statusCode || 'Pendente'}</td>
                             </tr>
+                            <tr className="risk-row">
+                              <td colSpan={3}><RiskNote assessment={risk} /></td>
+                            </tr>
+                            </Fragment>
                           ))}
                         </tbody>
                       </table>
@@ -325,6 +404,12 @@ export default function App() {
                     </p>
                   ) : (
                     <div>
+                      {riskReport?.security && (
+                        <div style={{ marginBottom: '12px' }}>
+                          <RiskNote assessment={riskReport.security.overall} />
+                        </div>
+                      )}
+
                       {session.securityHeaders.warnings.length > 0 && (
                         <div style={{ marginBottom: '14px' }}>
                           <h3 style={{ fontSize: '11.5px', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '6px' }}>
@@ -347,22 +432,17 @@ export default function App() {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>Content-Security-Policy</td>
-                              <td className="mono">{session.securityHeaders.headers.csp || 'Ausente'}</td>
-                            </tr>
-                            <tr>
-                              <td>Strict-Transport-Security (HSTS)</td>
-                              <td className="mono">{session.securityHeaders.headers.hsts || 'Ausente'}</td>
-                            </tr>
-                            <tr>
-                              <td>X-Content-Type-Options</td>
-                              <td className="mono">{session.securityHeaders.headers.xContentTypeOptions || 'Ausente'}</td>
-                            </tr>
-                            <tr>
-                              <td>Referrer-Policy</td>
-                              <td className="mono">{session.securityHeaders.headers.referrerPolicy || 'Ausente'}</td>
-                            </tr>
+                            {riskReport?.security?.headers.map((h) => (
+                              <Fragment key={h.key}>
+                                <tr className="has-risk-row">
+                                  <td>{h.label}</td>
+                                  <td className="mono">{h.value || 'Ausente'}</td>
+                                </tr>
+                                <tr className="risk-row">
+                                  <td colSpan={2}><RiskNote assessment={h.assessment} /></td>
+                                </tr>
+                              </Fragment>
+                            ))}
                           </tbody>
                         </table>
                       </div>
@@ -413,6 +493,13 @@ export default function App() {
                     </div>
                   )}
 
+                  {session.evidenceEvents.length > 0 && (
+                    <div style={{ marginBottom: '12px' }}>
+                      <RiskNote title="Integridade" assessment={assessChainIntegrity(chainStatus)} />
+                      {riskReport && <RiskSummaryBar assessments={Object.values(riskReport.evidence)} />}
+                    </div>
+                  )}
+
                   {session.evidenceEvents.length === 0 ? (
                     <p style={{ color: 'var(--text-muted)' }}>Nenhum evento gravado na cadeia.</p>
                   ) : (
@@ -431,6 +518,7 @@ export default function App() {
                             <div><strong>Prev:</strong> {ev.previousHash.substring(0, 16)}...{ev.previousHash.substring(48)}</div>
                             <div><strong>Hash:</strong> {ev.hash}</div>
                           </div>
+                          {riskReport?.evidence[ev.id] && <RiskNote assessment={riskReport.evidence[ev.id]} />}
                         </div>
                       ))}
                     </div>

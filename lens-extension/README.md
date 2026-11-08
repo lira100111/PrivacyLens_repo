@@ -54,12 +54,15 @@ lens-extension/
 │   │   ├── index.html         # Ponto de entrada do Side Panel
 │   │   ├── main.tsx           # Bootstrap do React
 │   │   ├── App.tsx            # Dashboard de auditoria completo (Tabs, Métricas, Hashes)
+│   │   ├── components/
+│   │   │   └── RiskNote.tsx   # Selo e explicação de risco de cada item (RF17)
 │   │   └── index.css          # Estilização moderna e responsiva
 │   ├── hooks/                 # Hooks React customizados
 │   │   └── useAuditSession.ts # Sincronização em tempo real com o background e storage
 │   └── shared/                # Tipos, criptografia e constantes compartilhadas
 │       ├── types.ts           # Interfaces TypeScript do modelo de evidência e IPC
 │       ├── crypto.ts          # Serialização canônica e cálculo de SHA-256
+│       ├── risk-analysis.ts   # Heurísticas de risco explicáveis por item coletado (RF17)
 │       └── constants.ts       # Seletores de CMPs e chaves de armazenamento
 ├── manifest.config.ts         # Configuração tipada do Manifest V3
 ├── vite.config.ts             # Configuração do Vite com @crxjs/vite-plugin
@@ -75,4 +78,5 @@ lens-extension/
 2. **Cadeia de Hashes:** Cada evento calcula seu hash:
    $$\text{Hash}_n = \text{SHA-256}(\text{Canônico}(E_n) + \text{Hash}_{n-1})$$
 3. **Verificação Instantânea:** O painel conta com o botão **"Verificar Integridade"**, que percorre toda a cadeia conferindo se houve adulteração em qualquer evento anterior.
-4. **Exportação de Relatório:** Exporta a sessão integral com histórico, dados técnicos e hashes em formato JSON para auditorias externas.
+4. **Explicação de Riscos (RF17):** Cada item coletado (consentimento, cookies, storage, rede, cabeçalhos de segurança e eventos da cadeia) mostra um selo de risco com uma explicação breve sobre se ele representa risco para o usuário. As avaliações são calculadas na interface e não alteram a cadeia de hashes. Detalhes em [`docs/modules/risk-analysis.md`](docs/modules/risk-analysis.md).
+5. **Exportação de Relatório:** Exporta a sessão integral com histórico, dados técnicos e hashes em formato JSON para auditorias externas.

@@ -311,3 +311,140 @@ tr:last-child td {
   padding: 40px 20px;
   color: var(--text-muted);
 }
+
+/* ------------------------------------------------------------------ */
+/* RF17 — Risk explanations                                           */
+/* ------------------------------------------------------------------ */
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.risk-badge.risk-none {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.risk-badge.risk-low {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+}
+
+.risk-badge.risk-medium {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+}
+
+.risk-badge.risk-high {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.risk-note {
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border-left: 3px solid var(--border);
+  background: rgba(15, 23, 42, 0.45);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.risk-note.risk-none { border-left-color: var(--success); }
+.risk-note.risk-low { border-left-color: var(--accent); }
+.risk-note.risk-medium { border-left-color: var(--warning); }
+.risk-note.risk-high { border-left-color: var(--danger); }
+
+.risk-note-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.risk-summary {
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.risk-summary strong {
+  color: #fff;
+}
+
+.risk-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 4px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 10.5px;
+  cursor: pointer;
+}
+
+.risk-toggle:hover {
+  text-decoration: underline;
+}
+
+.risk-details {
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+.risk-details ul {
+  padding-left: 16px;
+  margin-bottom: 4px;
+}
+
+.risk-details p strong {
+  color: var(--text-main);
+}
+
+.risk-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 6px 0 10px;
+  font-size: 10.5px;
+}
+
+.risk-summary-bar-label {
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.risk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.risk-disclaimer {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #64748b;
+  font-style: italic;
+}
+
+tr.has-risk-row td {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+tr.risk-row td {
+  padding-top: 0;
+}
+
+tr.risk-row .risk-note {
+  margin-top: 2px;
+}
