@@ -2,7 +2,7 @@
   "name": "lens-extension",
   "version": "0.1.0",
   "type": "module",
-  "description": "ProjectLens - Chrome Extension para Auditoria Técnica de Privacidade, Segurança e LGPD",
+  "description": "Privacylens - Chrome Extension para Auditoria Técnica de Privacidade, Segurança e LGPD",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,7 +16,7 @@
     "privacy-audit",
     "security"
   ],
-  "author": "ProjectLens Team",
+  "author": "Privacylens Team",
   "license": "MIT",
   "dependencies": {
     "lucide-react": "^1.48.0",

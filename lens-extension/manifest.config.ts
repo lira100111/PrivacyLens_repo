@@ -2,7 +2,7 @@ import { defineManifest } from '@crxjs/vite-plugin';
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'ProjectLens — Auditoria LGPD & Privacidade',
+  name: 'Privacylens — Auditoria LGPD & Privacidade',
   description: 'Auditoria técnica de privacidade, cookies, rede e segurança com evidências criptográficas.',
   version: '0.1.0',
   icons: {
@@ -11,7 +11,7 @@ export default defineManifest({
     '128': 'public/icon128.png'
   },
   action: {
-    default_title: 'Abrir ProjectLens Side Panel'
+    default_title: 'Abrir Privacylens Side Panel'
   },
   side_panel: {
     default_path: 'src/sidepanel/index.html'

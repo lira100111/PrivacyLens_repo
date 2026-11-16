@@ -4,12 +4,12 @@ import { evidenceManager } from './evidence-manager';
 import { cookieCollector } from './collectors/cookies';
 import { networkCollector } from './collectors/network';
 
-console.log('[ProjectLens Service Worker] Initialized.');
+console.log('[Privacylens Service Worker] Initialized.');
 
 // Initialize side panel behavior so clicking the extension action icon opens the side panel
 if (chrome.sidePanel && chrome.sidePanel.setPanelBehavior) {
   chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch((error) => {
-    console.warn('[ProjectLens] Could not set side panel behavior:', error);
+    console.warn('[Privacylens] Could not set side panel behavior:', error);
   });
 }
 

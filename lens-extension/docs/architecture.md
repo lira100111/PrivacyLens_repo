@@ -1,8 +1,8 @@
-# Arquitetura Técnica — ProjectLens Extension
+# Arquitetura Técnica — Privacylens Extension
 
 ## 1. Visão Geral
 
-O ProjectLens é estruturado em três domínios de execução isolados pelo Chrome Manifest V3:
+O Privacylens é estruturado em três domínios de execução isolados pelo Chrome Manifest V3:
 
 ```mermaid
 flowchart TD

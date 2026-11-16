@@ -1,5 +1,5 @@
 /**
- * Core types for ProjectLens Audit Extension
+ * Core types for Privacylens Audit Extension
  */
 
 export type AuditStatus = 'IDLE' | 'RECORDING' | 'PAUSED' | 'COMPLETED';

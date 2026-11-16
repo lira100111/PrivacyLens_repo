@@ -73,7 +73,7 @@ export function useAuditSession() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `projectlens-audit-${session.targetDomain || 'report'}-${Date.now()}.json`;
+    a.download = `privacylens-audit-${session.targetDomain || 'report'}-${Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
   }, [session]);

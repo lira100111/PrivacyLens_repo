@@ -63,7 +63,7 @@ export default function App() {
       <header className="header">
         <div className="brand">
           <Shield size={20} color="#38bdf8" />
-          <h1>ProjectLens</h1>
+          <h1>Privacylens</h1>
         </div>
         <div>
           {!session || session.status === 'IDLE' ? (
@@ -207,7 +207,7 @@ export default function App() {
                 <div className="card">
                   <h2>Metodologia de Auditoria Explicável</h2>
                   <p style={{ color: 'var(--text-muted)', fontSize: '11.5px', marginBottom: '8px' }}>
-                    O ProjectLens separa <strong>fatos observáveis</strong> de <strong>interpretações técnicas</strong> para apoiar a análise jurídica de proteção de dados (LGPD).
+                    O Privacylens separa <strong>fatos observáveis</strong> de <strong>interpretações técnicas</strong> para apoiar a análise jurídica de proteção de dados (LGPD).
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     <div style={{ fontSize: '11.5px' }}>
