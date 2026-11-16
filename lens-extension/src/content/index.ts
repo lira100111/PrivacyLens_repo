@@ -1,7 +1,7 @@
 import { CMP_DETECTION_SELECTORS, CONSENT_ACTION_BUTTON_KEYWORDS } from '../shared/constants';
 import { ConsentChoice, StorageEvidence } from '../shared/types';
 
-console.log('[ProjectLens Content Script] Loaded on:', window.location.href);
+console.log('[PrivacyLens Content Script] Loaded on:', window.location.href);
 
 function dumpStorage(): StorageEvidence[] {
   const result: StorageEvidence[] = [];
@@ -21,7 +21,7 @@ function dumpStorage(): StorageEvidence[] {
       }
     }
   } catch (err) {
-    console.warn('[ProjectLens] LocalStorage read blocked:', err);
+    console.warn('[PrivacyLens] LocalStorage read blocked:', err);
   }
 
   try {
@@ -38,7 +38,7 @@ function dumpStorage(): StorageEvidence[] {
       }
     }
   } catch (err) {
-    console.warn('[ProjectLens] SessionStorage read blocked:', err);
+    console.warn('[PrivacyLens] SessionStorage read blocked:', err);
   }
 
   return result;
