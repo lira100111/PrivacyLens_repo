@@ -141,7 +141,7 @@ export const InteractiveSimulator: React.FC = () => {
           </div>
           <div className="browser-actions">
             <div className="extension-icon-active" title="PrivacyLens Side Panel Aberto">
-              <Shield size={16} color="#38bdf8" />
+              <img src="/logo-mark.svg" alt="PrivacyLens" className="extension-logo-img" />
               <span className="active-dot"></span>
             </div>
           </div>
@@ -227,7 +227,7 @@ export const InteractiveSimulator: React.FC = () => {
             {/* Header */}
             <div className="sp-header">
               <div className="sp-brand">
-                <Shield size={18} color="#38bdf8" />
+                <img src="/logo-mark.svg" alt="" className="sp-logo-img" />
                 <span className="sp-title">PrivacyLens</span>
               </div>
               <div>

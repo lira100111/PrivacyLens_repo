@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 interface NavbarProps {
@@ -14,7 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInstallModal }) => {
       <div className="navbar-content">
         <a href="#" className="nav-brand">
           <div className="brand-logo-glow">
-            <Shield size={22} className="brand-icon" />
+            <img src="/logo-mark.svg" alt="PrivacyLens" className="brand-logo-img" />
           </div>
           <span className="brand-title">
             Privacy<span className="accent-text">Lens</span>

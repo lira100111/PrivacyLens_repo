@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, FileText, Lock, Heart, ExternalLink } from 'lucide-react';
+import { FileText, Lock, Heart, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export const Footer: React.FC = () => {
@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         <div className="footer-brand-col">
           <div className="footer-brand">
             <div className="brand-logo-glow">
-              <Shield size={20} className="brand-icon" />
+              <img src="/logo-mark.svg" alt="PrivacyLens" className="brand-logo-img" />
             </div>
             <span className="brand-title">
               Privacy<span className="accent-text">Lens</span>
