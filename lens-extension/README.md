@@ -1,4 +1,4 @@
-# ProjectLens — Chrome Extension (Manifest V3 + React 19)
+# PrivacyLens — Chrome Extension (Manifest V3 + React 19)
 
 Extensão de navegador para **Auditoria Técnica de Privacidade, Segurança e LGPD**, desenvolvida com **React 19**, **TypeScript**, **Vite** e **@crxjs/vite-plugin** seguindo as diretrizes do Manifest V3.
 
