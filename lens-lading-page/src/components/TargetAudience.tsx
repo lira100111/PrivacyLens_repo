@@ -68,7 +68,7 @@ export const TargetAudience: React.FC = () => {
         </h2>
         <p className="section-subtitle">
           Seja para validar conformidade com a LGPD, defender direitos ou garantir que o código
-          do seu produto respeite o usuário, o ProjectLens é sua lente técnica definitiva.
+          do seu produto respeite o usuário, o PrivacyLens é sua lente técnica definitiva.
         </p>
       </div>
 

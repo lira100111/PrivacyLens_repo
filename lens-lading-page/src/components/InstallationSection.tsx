@@ -31,7 +31,7 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
           <span>Comece Agora</span>
         </div>
         <h2 className="section-title">
-          Instale o ProjectLens em Menos de 2 Minutos
+          Instale o PrivacyLens em Menos de 2 Minutos
         </h2>
         <p className="section-subtitle">
           Disponível em código aberto para carregar no Google Chrome, Brave, Edge ou qualquer navegador Chromium.
@@ -112,7 +112,7 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
 
           <div className="store-callout">
             <p className="text-sm">
-              O ProjectLens está em fase de revisão final para publicação na Chrome Web Store.
+              O PrivacyLens está em fase de revisão final para publicação na Chrome Web Store.
               Inscreva-se ou acompanhe os lançamentos no GitHub para ser notificado assim que o link estiver ativo.
             </p>
 

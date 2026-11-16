@@ -22,7 +22,7 @@ export const ValueProps: React.FC = () => {
           Não Suposições. Provas Técnicas e Explicáveis.
         </h2>
         <p className="section-subtitle">
-          O ProjectLens foi desenhado com rigor metodológico para apoiar encarregados de dados (DPOs),
+          O PrivacyLens foi desenhado com rigor metodológico para apoiar encarregados de dados (DPOs),
           equipes jurídicas e auditores com evidências concretas e sem viés.
         </p>
       </div>
@@ -65,7 +65,7 @@ export const ValueProps: React.FC = () => {
           </div>
           <h3 className="value-title">Privacidade por Design (Zero Telemetria)</h3>
           <p className="value-desc">
-            Uma ferramenta de privacidade deve respeitar a sua própria privacidade. O ProjectLens não possui servidores externos de coleta,
+            Uma ferramenta de privacidade deve respeitar a sua própria privacidade. O PrivacyLens não possui servidores externos de coleta,
             não monitora seu uso e guarda 100% das evidências localmente no seu <code>chrome.storage.local</code>.
           </p>
           <div className="value-highlight">

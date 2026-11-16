@@ -1,12 +1,12 @@
-# ProjectLens — Landing Page Oficial
+# PrivacyLens — Landing Page Oficial
 
-Landing page oficial do **ProjectLens**, projetada para divulgar o projeto, educar novos usuários sobre auditoria técnica de privacidade e LGPD, e disponibilizar instruções de instalação da extensão Google Chrome.
+Landing page oficial do **PrivacyLens**, projetada para divulgar o projeto, educar novos usuários sobre auditoria técnica de privacidade e LGPD, e disponibilizar instruções de instalação da extensão Google Chrome.
 
 ---
 
 ## 🌟 Destaques da Landing Page
 
-1. **Simulador Interativo ao Vivo:** Demonstração funcional no próprio navegador com uma réplica fiel do **Side Panel** da extensão ProjectLens (Visão Geral, Consentimento, Cookies, Rede, Segurança HTTP e Cadeia SHA-256).
+1. **Simulador Interativo ao Vivo:** Demonstração funcional no próprio navegador com uma réplica fiel do **Side Panel** da extensão PrivacyLens (Visão Geral, Consentimento, Cookies, Rede, Segurança HTTP e Cadeia SHA-256).
 2. **Banner CMP Interativo:** Permite que o visitante clique em "Aceitar Todos" ou "Rejeitar Não Essenciais" e veja as mutações de cookies e disparos de terceiros em tempo real.
 3. **Verificador de Integridade Criptográfica (SHA-256):** Botão interativo que simula a validação dos hashes de evidências ponta a ponta.
 4. **Modal e Seção de Instalação Rápida:** Passo a passo com comandos prontos para clonar, compilar (`npm run build`) e carregar em Modo do Desenvolvedor no Google Chrome ou navegadores Chromium.
@@ -71,7 +71,7 @@ lens-lading-page/
 │       ├── ModulesSection.tsx  # Visão detalhada dos coletores da extensão
 │       ├── HowItWorks.tsx      # Fluxo de auditoria em 4 passos simples
 │       ├── TargetAudience.tsx  # Personas (DPOs, Devs, Advogados, Pesquisadores)
-│       ├── ComparisonTable.tsx # Tabela comparativa ProjectLens vs Alternativas
+│       ├── ComparisonTable.tsx # Tabela comparativa PrivacyLens vs Alternativas
 │       ├── InstallationSection.tsx # Comandos de instalação e status na Store
 │       ├── InstallationModal.tsx # Modal interativo com passo a passo
 │       ├── FaqSection.tsx      # Tira-dúvidas interativo (accordion)

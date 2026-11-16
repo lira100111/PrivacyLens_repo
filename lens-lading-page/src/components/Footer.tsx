@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
               <Shield size={20} className="brand-icon" />
             </div>
             <span className="brand-title">
-              Project<span className="accent-text">Lens</span>
+              Privacy<span className="accent-text">Lens</span>
             </span>
           </div>
           <p className="footer-bio">
@@ -112,7 +112,7 @@ export const Footer: React.FC = () => {
       {/* Legal Disclaimer Box */}
       <div className="legal-disclaimer">
         <p>
-          <strong>Aviso Metodológico & Legal:</strong> O ProjectLens é uma ferramenta técnica de observação, coleta de evidências e apoio à auditoria. 
+          <strong>Aviso Metodológico & Legal:</strong> O PrivacyLens é uma ferramenta técnica de observação, coleta de evidências e apoio à auditoria. 
           As evidências registradas não constituem declaração judicial definitiva de regularidade ou infração à Lei Geral de Proteção de Dados (LGPD) ou GDPR, 
           cuja análise depende da base legal, da finalidade e da interpretação do contexto pelo profissional competente ou autoridade reguladora (ANPD).
         </p>
@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
 
       <div className="footer-bottom">
         <div>
-          © {new Date().getFullYear()} ProjectLens. Desenvolvido para transparência e privacidade na web.
+          © {new Date().getFullYear()} PrivacyLens. Desenvolvido para transparência e privacidade na web.
         </div>
         <div className="flex items-center gap-1">
           <span>Construído com React 19 & TypeScript</span>

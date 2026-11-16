@@ -117,7 +117,7 @@ export const InteractiveSimulator: React.FC = () => {
           <span>Demonstração Interativa</span>
         </div>
         <h2 className="section-title">
-          Experimente o ProjectLens Diretamente no Navegador
+          Experimente o PrivacyLens Diretamente no Navegador
         </h2>
         <p className="section-subtitle">
           Veja abaixo a extensão em ação simulando uma auditoria técnica em uma loja virtual fictícia.
@@ -140,14 +140,14 @@ export const InteractiveSimulator: React.FC = () => {
             <RefreshCw size={12} className="refresh-icon" />
           </div>
           <div className="browser-actions">
-            <div className="extension-icon-active" title="ProjectLens Side Panel Aberto">
+            <div className="extension-icon-active" title="PrivacyLens Side Panel Aberto">
               <Shield size={16} color="#38bdf8" />
               <span className="active-dot"></span>
             </div>
           </div>
         </div>
 
-        {/* Browser Body: Left = Website DOM, Right = ProjectLens Side Panel */}
+        {/* Browser Body: Left = Website DOM, Right = PrivacyLens Side Panel */}
         <div className="browser-viewport">
           
           {/* Left: Mock Website Page */}
@@ -222,13 +222,13 @@ export const InteractiveSimulator: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: ProjectLens Sidepanel UI (Faithful replica of src/sidepanel/App.tsx) */}
+          {/* Right: PrivacyLens Sidepanel UI (Faithful replica of src/sidepanel/App.tsx) */}
           <div className="sidepanel-viewport">
             {/* Header */}
             <div className="sp-header">
               <div className="sp-brand">
                 <Shield size={18} color="#38bdf8" />
-                <span className="sp-title">ProjectLens</span>
+                <span className="sp-title">PrivacyLens</span>
               </div>
               <div>
                 {!isAuditing ? (
@@ -331,7 +331,7 @@ export const InteractiveSimulator: React.FC = () => {
                   <div className="sp-card">
                     <h4>Metodologia de Auditoria Explicável</h4>
                     <p className="sp-muted-text">
-                      O ProjectLens separa <strong>fatos observáveis</strong> de interpretações para apoiar a análise jurídica de conformidade com a LGPD.
+                      O PrivacyLens separa <strong>fatos observáveis</strong> de interpretações para apoiar a análise jurídica de conformidade com a LGPD.
                     </p>
                     <div className="sp-info-rows">
                       <div className="sp-info-row">
@@ -555,7 +555,7 @@ export const InteractiveSimulator: React.FC = () => {
             </div>
             <div className="modal-body">
               <p className="text-xs text-muted mb-2">
-                O ProjectLens gera relatórios estruturados prontos para anexar a relatórios de conformidade (RIPD/DPIA) ou auditorias técnicas:
+                O PrivacyLens gera relatórios estruturados prontos para anexar a relatórios de conformidade (RIPD/DPIA) ou auditorias técnicas:
               </p>
               <pre className="json-preview">
 {JSON.stringify({

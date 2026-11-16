@@ -14,7 +14,7 @@ export const ComparisonTable: React.FC = () => {
       adblockers: 'partial',
       saasScanners: 'no',
       devtools: 'yes',
-      notes: 'O ProjectLens roda exatamente na sua sessão e IP, sem divergência de geolocalização.'
+      notes: 'O PrivacyLens roda exatamente na sua sessão e IP, sem divergência de geolocalização.'
     },
     {
       name: 'Detecção de CMPs & Comparação Pré/Pós Consentimento',
@@ -84,10 +84,10 @@ export const ComparisonTable: React.FC = () => {
           <span>Análise Comparativa</span>
         </div>
         <h2 className="section-title">
-          Por que o ProjectLens é a Abordagem Ideal?
+          Por que o PrivacyLens é a Abordagem Ideal?
         </h2>
         <p className="section-subtitle">
-          Veja como o ProjectLens se compara a outras ferramentas de mercado e extensões convencionais.
+          Veja como o PrivacyLens se compara a outras ferramentas de mercado e extensões convencionais.
         </p>
       </div>
 
@@ -97,7 +97,7 @@ export const ComparisonTable: React.FC = () => {
             <tr>
               <th className="th-feature">Critério de Auditoria</th>
               <th className="th-highlight">
-                <div className="th-projectlens-badge">ProjectLens</div>
+                <div className="th-projectlens-badge">PrivacyLens</div>
               </th>
               <th>Bloqueadores de Anúncios</th>
               <th>Scanners SaaS Remotos</th>

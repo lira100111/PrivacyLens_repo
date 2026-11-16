@@ -13,7 +13,7 @@ export const HowItWorks: React.FC = () => {
     {
       step: '01',
       title: 'Abra a Página e Abra o Side Panel',
-      description: 'Acesse o site a ser auditado e clique no ícone do ProjectLens na barra do Chrome para abrir o painel lateral fixo.',
+      description: 'Acesse o site a ser auditado e clique no ícone do PrivacyLens na barra do Chrome para abrir o painel lateral fixo.',
       icon: Terminal
     },
     {

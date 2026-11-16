@@ -32,7 +32,7 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
         <div className="modal-header">
           <div className="flex items-center gap-2">
             <ShieldCheck size={20} className="text-cyan" />
-            <h3>Como Instalar o ProjectLens no seu Navegador</h3>
+            <h3>Como Instalar o PrivacyLens no seu Navegador</h3>
           </div>
           <button className="btn-close" onClick={onClose} aria-label="Fechar">×</button>
         </div>
@@ -94,7 +94,7 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
                   <li>No canto superior direito, ative a chave <strong>"Modo do desenvolvedor"</strong> (Developer mode).</li>
                   <li>Clique no botão <strong>"Carregar sem compactação"</strong> (Load unpacked).</li>
                   <li>Selecione a pasta <strong><code>lens-extension/dist</code></strong>.</li>
-                  <li>Pronto! O ícone de escudo do ProjectLens estará ativo na sua barra de extensões.</li>
+                  <li>Pronto! O ícone de escudo do PrivacyLens estará ativo na sua barra de extensões.</li>
                 </ol>
               </div>
             </div>

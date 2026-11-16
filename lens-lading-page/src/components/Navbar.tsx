@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInstallModal }) => {
             <Shield size={22} className="brand-icon" />
           </div>
           <span className="brand-title">
-            Project<span className="accent-text">Lens</span>
+            Privacy<span className="accent-text">Lens</span>
           </span>
           <span className="nav-badge">v0.1.0 • Manifest V3</span>
         </a>

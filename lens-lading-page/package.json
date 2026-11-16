@@ -2,7 +2,7 @@
   "name": "lens-landing-page",
   "version": "1.0.0",
   "type": "module",
-  "description": "ProjectLens - Landing page oficial para divulgação e atração de novos usuários",
+  "description": "PrivacyLens - Landing page oficial para divulgação e atração de novos usuários",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,7 +16,7 @@
     "security",
     "chrome-extension"
   ],
-  "author": "ProjectLens Team",
+  "author": "PrivacyLens Team",
   "license": "MIT",
   "dependencies": {
     "lucide-react": "^1.48.0",
