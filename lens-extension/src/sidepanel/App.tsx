@@ -7,6 +7,7 @@ import {
   RISK_CATEGORY_LABELS
 } from '../shared/risk-analysis';
 import { RiskNote, RiskSummaryBar } from './components/RiskNote';
+import logoUrl from './assets/logo.png';
 import { 
   Shield, 
   Play, 
@@ -62,7 +63,7 @@ export default function App() {
       {/* Top Header */}
       <header className="header">
         <div className="brand">
-          <Shield size={20} color="#38bdf8" />
+          <img src={logoUrl} alt="Privacylens" className="brand-logo" />
           <h1>Privacylens</h1>
         </div>
         <div>
