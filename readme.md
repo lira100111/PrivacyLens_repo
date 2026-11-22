@@ -252,3 +252,6 @@ Também registre as limitações: APIs do navegador não expõem tudo; banners p
 ---
 
 *Documento preparado como plano técnico de estudo e desenvolvimento. Tecnologias e APIs de navegador devem ser conferidas na documentação atual durante a implementação.*
+
+
+https://privacy-lens-repo.vercel.app/#faq
