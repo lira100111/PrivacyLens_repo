@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Download, 
-  Terminal, 
   Check, 
   Copy, 
-  FolderCheck, 
-  Sparkles,
   ExternalLink
 } from 'lucide-react';
 import { ChromeIcon } from './Icons';
@@ -13,6 +10,10 @@ import { ChromeIcon } from './Icons';
 interface InstallationSectionProps {
   onOpenModal: () => void;
 }
+
+const REPO_URL = 'https://github.com/lira100111/PrivacyLens_repo';
+const RELEASES_URL = 'https://github.com/lira100111/PrivacyLens_repo/releases';
+const RELEASE_FILE = 'PrivacyLens_1.0.0.zip';
 
 export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpenModal }) => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -34,19 +35,19 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
           Instale o PrivacyLens em Menos de 2 Minutos
         </h2>
         <p className="section-subtitle">
-          Disponível em código aberto para carregar no Google Chrome, Brave, Edge ou qualquer navegador Chromium.
+          Baixe a release pronta para uso e carregue no Google Chrome, Brave, Edge ou qualquer navegador Chromium — sem precisar instalar dependências.
         </p>
       </div>
 
       <div className="install-grid">
-        {/* Method 1: Developer Mode Build */}
+        {/* Method 1: GitHub Release (Unpacked) */}
         <div className="install-card active-method">
-          <div className="install-card-badge">Recomendado para Testes Imediatos</div>
+          <div className="install-card-badge">Recomendado • Versão 1.0.0</div>
           <div className="install-card-header">
-            <Terminal size={22} className="text-cyan" />
+            <Download size={22} className="text-cyan" />
             <div>
-              <h3>Instalação via Código Fonte (Modo Desenvolvedor)</h3>
-              <p>Execute localmente em seu próprio ambiente com build auditável.</p>
+              <h3>Instalação via Release do GitHub (Sem Compactação)</h3>
+              <p>Baixe o pacote compilado e carregue diretamente no navegador.</p>
             </div>
           </div>
 
@@ -54,16 +55,30 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
             <div className="install-step-item">
               <div className="step-badge">1</div>
               <div className="step-info">
-                <strong>Clone o repositório oficial</strong>
-                <div className="code-box">
-                  <code>git clone https://github.com/leonardoferreira21/ProjectLens.git</code>
-                  <button 
-                    className="btn-copy" 
-                    onClick={() => copyToClipboard('git clone https://github.com/leonardoferreira21/ProjectLens.git', 1)}
-                    title="Copiar comando"
+                <strong>Baixe a release oficial no GitHub</strong>
+                <p className="text-xs text-muted mt-1">
+                  Acesse as releases do repositório{' '}
+                  <a
+                    href={REPO_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="install-inline-link"
                   >
-                    {copiedIndex === 1 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
-                  </button>
+                    lira100111/PrivacyLens_repo
+                  </a>{' '}
+                  e baixe o arquivo <code>{RELEASE_FILE}</code>.
+                </p>
+                <div className="install-step-actions">
+                  <a
+                    href={RELEASES_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-install-download"
+                  >
+                    <Download size={14} />
+                    <span>Baixar {RELEASE_FILE} nas Releases</span>
+                    <ExternalLink size={13} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -71,28 +86,31 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
             <div className="install-step-item">
               <div className="step-badge">2</div>
               <div className="step-info">
-                <strong>Instale as dependências e faça o build do Manifest V3</strong>
-                <div className="code-box">
-                  <code>cd ProjectLens/lens-extension && npm install && npm run build</code>
-                  <button 
-                    className="btn-copy" 
-                    onClick={() => copyToClipboard('cd ProjectLens/lens-extension && npm install && npm run build', 2)}
-                    title="Copiar comando"
-                  >
-                    {copiedIndex === 2 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
-                  </button>
-                </div>
+                <strong>Descompacte o arquivo {RELEASE_FILE}</strong>
+                <p className="text-xs text-muted mt-1">
+                  Extraia o conteúdo de <code>{RELEASE_FILE}</code> em uma pasta no seu computador.
+                </p>
               </div>
             </div>
 
             <div className="install-step-item">
               <div className="step-badge">3</div>
               <div className="step-info">
-                <strong>Carregue a pasta no Google Chrome</strong>
-                <p className="text-xs text-muted mt-1">
+                <strong>Carregue a extensão sem compactação no Google Chrome</strong>
+                <div className="code-box">
+                  <code>chrome://extensions</code>
+                  <button 
+                    className="btn-copy" 
+                    onClick={() => copyToClipboard('chrome://extensions', 1)}
+                    title="Copiar endereço"
+                  >
+                    {copiedIndex === 1 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
+                  </button>
+                </div>
+                <p className="text-xs text-muted mt-2">
                   1. Abra <code>chrome://extensions</code> no navegador.<br />
                   2. Ative a chave <strong>"Modo do desenvolvedor"</strong> (canto superior direito).<br />
-                  3. Clique em <strong>"Carregar sem compactação"</strong> e selecione a pasta <code>lens-extension/dist</code>.
+                  3. Clique em <strong>"Carregar sem compactação"</strong> e selecione a pasta extraída de <code>{RELEASE_FILE}</code>.
                 </p>
               </div>
             </div>
@@ -113,12 +131,12 @@ export const InstallationSection: React.FC<InstallationSectionProps> = ({ onOpen
           <div className="store-callout">
             <p className="text-sm">
               O PrivacyLens está em fase de revisão final para publicação na Chrome Web Store.
-              Inscreva-se ou acompanhe os lançamentos no GitHub para ser notificado assim que o link estiver ativo.
+              Enquanto isso, você já pode baixar a versão pronta (<code>{RELEASE_FILE}</code>) diretamente nas releases do GitHub.
             </p>
 
             <div className="store-buttons">
               <a 
-                href="https://github.com/leonardoferreira21/ProjectLens/releases" 
+                href={RELEASES_URL} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="btn-outline-store"

@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { 
-  X, 
-  Terminal, 
+  Download,
   Copy, 
   Check, 
-  ArrowRight,
   ExternalLink,
-  ShieldCheck,
-  CheckCircle2
+  ShieldCheck
 } from 'lucide-react';
 
 interface InstallationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const REPO_URL = 'https://github.com/lira100111/PrivacyLens_repo';
+const RELEASES_URL = 'https://github.com/lira100111/PrivacyLens_repo/releases';
+const RELEASE_FILE = 'PrivacyLens_1.0.0.zip';
 
 export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, onClose }) => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -40,7 +41,7 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
         <div className="modal-body">
           <div className="install-modal-banner">
             <div className="text-sm">
-              <strong>Versão 0.1.0 (MVP)</strong> disponível para Google Chrome, Brave, Microsoft Edge e navegadores Chromium.
+              <strong>Versão 1.0.0</strong> disponível para Google Chrome, Brave, Microsoft Edge e navegadores Chromium — sem necessidade de clonar o repositório ou instalar dependências.
             </div>
           </div>
 
@@ -49,16 +50,30 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
             <div className="modal-step">
               <div className="modal-step-badge">1</div>
               <div className="modal-step-body">
-                <h4>Clonar o Repositório Git</h4>
-                <p className="text-xs text-muted mb-2">Abra seu terminal e faça o clone do código-fonte oficial:</p>
-                <div className="code-box">
-                  <code>git clone https://github.com/leonardoferreira21/ProjectLens.git</code>
-                  <button 
-                    className="btn-copy"
-                    onClick={() => copyToClipboard('git clone https://github.com/leonardoferreira21/ProjectLens.git', 1)}
+                <h4>Baixar a Release no GitHub</h4>
+                <p className="text-xs text-muted mb-2">
+                  Acesse a página de releases do repositório{' '}
+                  <a
+                    href={REPO_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="install-inline-link"
                   >
-                    {copiedIndex === 1 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
-                  </button>
+                    https://github.com/lira100111/PrivacyLens_repo
+                  </a>{' '}
+                  e faça o download do arquivo <code>{RELEASE_FILE}</code>:
+                </p>
+                <div className="install-step-actions">
+                  <a
+                    href={RELEASES_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-install-download"
+                  >
+                    <Download size={14} />
+                    <span>Baixar {RELEASE_FILE} no GitHub</span>
+                    <ExternalLink size={13} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -67,19 +82,10 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
             <div className="modal-step">
               <div className="modal-step-badge">2</div>
               <div className="modal-step-body">
-                <h4>Instalar Dependências e Compilar (Build)</h4>
-                <p className="text-xs text-muted mb-2">Entre na pasta da extensão e execute o build do Manifest V3:</p>
-                <div className="code-box">
-                  <code>cd ProjectLens/lens-extension && npm install && npm run build</code>
-                  <button 
-                    className="btn-copy"
-                    onClick={() => copyToClipboard('cd ProjectLens/lens-extension && npm install && npm run build', 2)}
-                  >
-                    {copiedIndex === 2 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
-                  </button>
-                </div>
-                <p className="text-xs text-muted mt-2">
-                  Isso irá gerar a pasta <code>lens-extension/dist</code> contendo o código compilado e validado em TypeScript.
+                <h4>Descompactar o Arquivo Baixado</h4>
+                <p className="text-xs text-muted">
+                  Extraia todo o conteúdo do arquivo <code>{RELEASE_FILE}</code> para uma pasta no seu computador.
+                  Mantenha essa pasta em um local fixo, pois o Chrome a utilizará enquanto a extensão estiver carregada.
                 </p>
               </div>
             </div>
@@ -88,12 +94,22 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
             <div className="modal-step">
               <div className="modal-step-badge">3</div>
               <div className="modal-step-body">
-                <h4>Carregar Extensão no Chrome</h4>
+                <h4>Carregar Extensão sem Compactação no Chrome</h4>
+                <div className="code-box mb-2">
+                  <code>chrome://extensions</code>
+                  <button 
+                    className="btn-copy"
+                    onClick={() => copyToClipboard('chrome://extensions', 1)}
+                    title="Copiar endereço"
+                  >
+                    {copiedIndex === 1 ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
+                  </button>
+                </div>
                 <ol className="modal-ol-list">
                   <li>No navegador, digite e acesse: <code>chrome://extensions</code></li>
                   <li>No canto superior direito, ative a chave <strong>"Modo do desenvolvedor"</strong> (Developer mode).</li>
                   <li>Clique no botão <strong>"Carregar sem compactação"</strong> (Load unpacked).</li>
-                  <li>Selecione a pasta <strong><code>lens-extension/dist</code></strong>.</li>
+                  <li>Selecione a pasta extraída do arquivo <strong><code>{RELEASE_FILE}</code></strong>.</li>
                   <li>Pronto! O ícone de escudo do PrivacyLens estará ativo na sua barra de extensões.</li>
                 </ol>
               </div>
@@ -103,12 +119,12 @@ export const InstallationModal: React.FC<InstallationModalProps> = ({ isOpen, on
 
         <div className="modal-footer">
           <a 
-            href="https://github.com/leonardoferreira21/ProjectLens" 
+            href={RELEASES_URL} 
             target="_blank" 
             rel="noreferrer" 
             className="btn-secondary"
           >
-            <span>Acessar no GitHub</span>
+            <span>Ver Releases no GitHub</span>
             <ExternalLink size={14} />
           </a>
           <button className="btn-primary" onClick={onClose}>

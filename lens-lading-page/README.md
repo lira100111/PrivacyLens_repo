@@ -9,7 +9,7 @@ Landing page oficial do **PrivacyLens**, projetada para divulgar o projeto, educ
 1. **Simulador Interativo ao Vivo:** Demonstração funcional no próprio navegador com uma réplica fiel do **Side Panel** da extensão PrivacyLens (Visão Geral, Consentimento, Cookies, Rede, Segurança HTTP e Cadeia SHA-256).
 2. **Banner CMP Interativo:** Permite que o visitante clique em "Aceitar Todos" ou "Rejeitar Não Essenciais" e veja as mutações de cookies e disparos de terceiros em tempo real.
 3. **Verificador de Integridade Criptográfica (SHA-256):** Botão interativo que simula a validação dos hashes de evidências ponta a ponta.
-4. **Modal e Seção de Instalação Rápida:** Passo a passo com comandos prontos para clonar, compilar (`npm run build`) e carregar em Modo do Desenvolvedor no Google Chrome ou navegadores Chromium.
+4. **Modal e Seção de Instalação Rápida:** Passo a passo para baixar a release (`PrivacyLens_1.0.0.zip`), descompactar e carregar sem compactação no Google Chrome ou navegadores Chromium.
 5. **Tabela Comparativa:** Demonstra com clareza os diferenciais frente a adblockers genéricos, scanners remotos SaaS e DevTools manual.
 6. **Perguntas Frequentes (FAQ):** Esclarece dúvidas cruciais sobre privacidade (zero telemetria), limitações técnicas e separação entre fatos observados e pareceres jurídicos.
 
