@@ -30,7 +30,7 @@ Exemplo: "O cookie X foi criado após a escolha 'Rejeitar'" é uma evidência ob
 
 ---
 
-## 3. O que estudar antes e durante a implementação
+## 3. Bases conceituais
 
 - **JavaScript moderno:** const/let, funções, módulos, objetos, arrays, JSON, Promises, async/await, eventos e tratamento de erros.
 - **HTML/CSS:** estrutura semântica, formulários, Flexbox/Grid, responsividade e construção do dashboard.
